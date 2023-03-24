@@ -12,7 +12,7 @@ namespace Samurai.SpecialSpell
         }
         public override int Check()
         {
-            if((SpellsDefine.Higanbana.Check() && !Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.Higanbana, 3000)))
+            if(!Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.Higanbana, 3000))
                 return base.Check();
             return -1;
         }
