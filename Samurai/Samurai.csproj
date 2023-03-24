@@ -23,9 +23,11 @@
   <ItemGroup>
     <Reference Include="CombatRoutine">
       <HintPath>..\..\Dalamud_AEAssist\AEAssist\Output\AEAssistCNVersion\CombatRoutine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Common">
       <HintPath>..\..\Dalamud_AEAssist\AEAssist\Output\AEAssistCNVersion\Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
 
