@@ -17,5 +17,9 @@ namespace Samurai.SpecialSpell
                 return -3;
             return base.Check();
         }
+        private bool CheckEffect()
+        {
+            return false;
+        }
     }
 }

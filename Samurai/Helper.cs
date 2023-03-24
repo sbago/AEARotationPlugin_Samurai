@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Define;
 using Common.MemoryApi;
 using System.Runtime.InteropServices;
 
@@ -32,6 +33,10 @@ namespace Samurai
                 return Core.Get<IMemApiFunctionPointer>().CheckActionCanUse(actionId) != 572 && Core.Get<IMemApiSpell>().GetActionInRangeOrLoS(actionId) != 566;
             }
             return false;
+        }
+        public static bool Check(this Spell spell)
+        {
+            return spell.Id.Check();
         }
     }
 }

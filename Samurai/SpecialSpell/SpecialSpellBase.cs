@@ -22,7 +22,7 @@ namespace Samurai.SpecialSpell
         //通用检查 子类同名方法应该都调用此方法
         public virtual int Check()
         {
-            if(Spell.Id.Check())
+            if(Spell.Check())
                 return 0;
             return -1;
         }

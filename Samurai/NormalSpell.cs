@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Samurai
 {
+    //能用就用的技能归在这个类的实例
     internal class NormalSpell:ISlotResolver
     {
         private Spell Spell;
