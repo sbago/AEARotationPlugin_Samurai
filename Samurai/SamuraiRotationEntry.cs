@@ -4,6 +4,7 @@ using Common.Define;
 using Common.Helper;
 using Common.Language;
 using Samurai.Opener;
+using Samurai.Overlay;
 using Samurai.RotationEventHandler;
 using Samurai.SettingUI;
 
@@ -17,6 +18,7 @@ namespace Samurai
 
         public string OverlayTitle => "Test";
 
+        private SamuraiOverlay Overlay = new SamuraiOverlay();
         public Rotation Build(string settingFolder)
         {
             return new Rotation(this, new SamuraiSlotResolvers()._slotResolvers)
@@ -41,7 +43,7 @@ namespace Samurai
 
         public void DrawOverlay()
         {
-            ;
+            Overlay.Draw();
         }
 
         public void OnLanguageChanged(LanguageType languageType)

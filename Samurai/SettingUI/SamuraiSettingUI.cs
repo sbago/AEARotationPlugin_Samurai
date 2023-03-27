@@ -5,7 +5,7 @@ namespace Samurai.SettingUI
 {
     internal class SamuraiSettingUI : ISettingUI
     {
-        public string Name => "NINSettingUI";
+        public string Name => "SamuraiSettingUI";
 
         public void Draw()
         {

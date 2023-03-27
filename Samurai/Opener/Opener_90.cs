@@ -1,5 +1,6 @@
 ﻿using CombatRoutine;
 using CombatRoutine.Opener;
+using Common;
 using Common.Define;
 
 namespace Samurai.Opener
@@ -34,6 +35,8 @@ namespace Samurai.Opener
                 return -1;
             if (!SpellsDefine.MeikyoShisui.Check())
                 return -2;
+            if (Core.Me.InCombat)
+                return -3;
             return 1;
         }
 

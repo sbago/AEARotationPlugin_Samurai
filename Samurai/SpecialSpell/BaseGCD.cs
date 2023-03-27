@@ -1,6 +1,8 @@
 ﻿using CombatRoutine;
 using Common.Define;
 using Common;
+using Samurai.RotationEventHandler;
+using Common.Helper;
 
 namespace Samurai.SpecialSpell
 {
@@ -13,16 +15,20 @@ namespace Samurai.SpecialSpell
         bool HasKa => Core.Get<IMemApiSamurai>().HasKa();
         public void Build(Slot slot)
         {
+            LogHelper.Info(GetBaseSpell().GetSpell().Name + Helper.GetGCDCooldown().ToString());
             slot.Add(GetBaseSpell().GetSpell());
         }
 
         public int Check()
         {
+            var spell = GetBaseSpell().GetSpell();
+            if (spell == null)
+                return -1;
             return GetBaseSpell().Check() ? 0 : -1;
         }
         private uint GetBaseSpell()
         {
-            if (Core.Me.HasAura(AurasDefine.MeikyoShisui))
+            if (Core.Me.HasAura(AurasDefine.MeikyoShisui) || SamuraiRotationEventHandler.hasMeikyoShisui)
             {
                 if (!HasKa)
                     return SpellsDefine.Kasha;

@@ -1,5 +1,6 @@
 ﻿using CombatRoutine;
 using Common.Define;
+using Common.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +13,31 @@ namespace Samurai
     internal class NormalSpell:ISlotResolver
     {
         private Spell Spell;
-        public NormalSpell(uint spellId,bool isGCD) 
+        private bool BurstControl;
+        public NormalSpell(uint spellId,bool isGCD,bool burstControl = false) 
         {
             SlotMode = isGCD ? SlotMode.Gcd : SlotMode.OffGcd;
             Spell = spellId.GetSpell();
+            BurstControl = burstControl;
         }
 
         public SlotMode SlotMode { get; }
 
         public void Build(Slot slot)
         {
+            LogHelper.Info(Spell.Name + Helper.GetGCDCooldown().ToString());
             slot.Add(Spell);
         }
 
         public int Check()
         {
-            if (Spell.Id.Check())
+            if (BurstControl && BattleData.Burst)
+                return -4;
+            if (Spell == null)
+                return -3;
+            if (SlotMode == SlotMode.OffGcd && Helper.GetGCDCooldown() < 600)
+                return -2;
+            if (Spell.Check())
                 return 0;
             return -1;
         }
