@@ -6,16 +6,10 @@
     <Nullable>enable</Nullable>
     <BaseOutputPath>..\..\Dalamud_AEAssist\AEAssist\Output\RotationPlugin</BaseOutputPath>
     <PlatformTarget>x64</PlatformTarget>
-    <OutDir>$(BaseOutputPath)\Sbago\</OutDir>
+    <OutDir>$(BaseOutputPath)\$(AssemblyName)\</OutDir>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<LangVersion>latest</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Update="Loader.toml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="CombatRoutine">

@@ -2,7 +2,7 @@
 
 namespace Samurai.SpecialSpell
 {
-    internal class SpecialSpell_KaeshiSetsugekka:SpecialSpellBase
+    internal class SpecialSpell_KaeshiSetsugekka:SpellBase
     {
         public SpecialSpell_KaeshiSetsugekka() : base(SpellsDefine.KaeshiSetsugekka,true) 
         { 

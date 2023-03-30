@@ -2,6 +2,7 @@
 using Common.Define;
 using Common.Helper;
 using Common.MemoryApi;
+using Samurai.SpecialSpell;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -10,11 +11,16 @@ namespace Samurai
     [StructLayout(LayoutKind.Explicit)]
     struct ActionData
     {
+        [FieldOffset(0x14)] public ushort Cast100ms;
         [FieldOffset(0x2C)] public byte CooldownGroup;
         [FieldOffset(0x2D)] public byte AdditionalCooldownGroup;
         public bool IsGCD()
         {
             return CooldownGroup == 58 || AdditionalCooldownGroup == 58;
+        }
+        public bool IsCastSpell()
+        {
+            return Cast100ms > 0;
         }
     }
     internal static class Helper
@@ -30,8 +36,7 @@ namespace Samurai
         }
         public unsafe static bool Check(this uint actionId)
         {
-            //AE 设置的GCD 300ms开始判断 我们目标200ms再开始判断。目的消除buff延迟的影响
-            if (((ActionData*)Core.Get<IMemApiFunctionPointer>().GetActionData(actionId))->IsGCD() && GetGCDCooldown() > 200)
+            if (((ActionData*)Core.Get<IMemApiFunctionPointer>().GetActionData(actionId))->IsCastSpell() && Core.Get<IMemApiMove>().IsMoving())
                 return false;
             if (CanUse(actionId))
             {
@@ -46,6 +51,12 @@ namespace Samurai
         public static int GetGCDCooldown()
         {           
             return Core.Get<IMemApiSpell>().GetGCDDuration() - Core.Get<IMemApiSpell>().GetElapsedGCD();
+        }
+        public static void StateWhenNextHiganbana()
+        {
+            var info = new Info();
+            //info.s
+
         }
     }
 }

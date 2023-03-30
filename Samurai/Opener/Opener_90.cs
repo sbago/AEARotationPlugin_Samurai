@@ -25,8 +25,8 @@ namespace Samurai.Opener
 
         public void InitCountDown(CountDownHandler countDownHandler)
         {
-            countDownHandler.AddAction(10000, SpellsDefine.MeikyoShisui.GetSpell());
-            countDownHandler.AddAction(500, SpellsDefine.Kasha.GetSpell());
+            countDownHandler.AddAction(10000, SpellsDefine.MeikyoShisui);
+            countDownHandler.AddAction(500, SpellsDefine.Kasha);
         }
 
         public int StartCheck()

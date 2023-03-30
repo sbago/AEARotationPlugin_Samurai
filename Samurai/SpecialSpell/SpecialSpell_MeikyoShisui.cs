@@ -12,12 +12,14 @@ namespace Samurai.SpecialSpell
         public Sen Sen;
         public double HiganbanaTimeLeft;
         public double MeikyoShisuiCooldown;
+        public int MeikyoShisuiStack;
         public Info()
         {
             ComboSpellId = Core.Get<IMemApiSpell>().GetLastComboSpellId();
             Sen = new Sen();
             HiganbanaTimeLeft = Core.Me.GetCurrTarget().GetBuffTimespanLeft(AurasDefine.Higanbana).TotalMilliseconds;
             MeikyoShisuiCooldown = SpellsDefine.MeikyoShisui.GetSpell().Cooldown.TotalMilliseconds;
+            MeikyoShisuiStack = Core.Me.GetAuraStack(AurasDefine.MeikyoShisui);
         }
     }
     public struct Sen
@@ -33,7 +35,7 @@ namespace Samurai.SpecialSpell
             HasKa = a.HasKa();
         }
     }
-    internal class SpecialSpell_MeikyoShisui:SpecialSpellBase
+    internal class SpecialSpell_MeikyoShisui:SpellBase
     {
         uint Combo => Core.Get<IMemApiSpell>().GetLastComboSpellId();
         public SpecialSpell_MeikyoShisui() : base(SpellsDefine.MeikyoShisui,false) 
@@ -48,6 +50,8 @@ namespace Samurai.SpecialSpell
                 return -2;
             if (Combo == SpellsDefine.Hakaze || Combo == SpellsDefine.Shifu || Combo == SpellsDefine.Jinpu)
                 return -3;
+            if (Core.Get<IMemApiSamurai>().Sen() == 3)
+                return -4;
             return base.Check();
         }
         private bool CheckEffect()

@@ -2,7 +2,7 @@
 
 namespace Samurai.SpecialSpell
 {
-    internal class SpecialSpell_MidareSetsugekka:SpecialSpellBase
+    internal class SpecialSpell_MidareSetsugekka:SpellBase
     {
         public SpecialSpell_MidareSetsugekka() :base(SpellsDefine.MidareSetsugekka,true)
         { 

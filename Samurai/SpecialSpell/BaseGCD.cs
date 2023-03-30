@@ -36,7 +36,7 @@ namespace Samurai.SpecialSpell
                     return SpellsDefine.Gekko;
                 if (!HasSetsu)
                     return SpellsDefine.Yukikaze;
-                return 0;
+                return SpellsDefine.Kasha;//
             }
             else
             {

@@ -5,7 +5,7 @@ using Common.Helper;
 namespace Samurai.SpecialSpell
 {
     //彼岸花
-    internal class SpecialSpell_Higanbana : SpecialSpellBase
+    internal class SpecialSpell_Higanbana : SpellBase
     {
         public SpecialSpell_Higanbana() : base(SpellsDefine.Higanbana,true) 
         { 
