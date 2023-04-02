@@ -6,25 +6,17 @@ using Common.Helper;
 
 namespace Samurai.SpecialSpell
 {
-    internal class BaseGCD : ISlotResolver
-    {
-        public SlotMode SlotMode => SlotMode.Gcd;
+    internal class BaseGCD : SpellBase
+    {        
         uint Combo => Core.Get<IMemApiSpell>().GetLastComboSpellId();
         bool HasSetsu => Core.Get<IMemApiSamurai>().HasSetsu();
         bool HasGetsu => Core.Get<IMemApiSamurai>().HasGetsu();
         bool HasKa => Core.Get<IMemApiSamurai>().HasKa();
-        public void Build(Slot slot)
+        public BaseGCD() { SlotMode = SlotMode.Gcd; }
+        public override int Check()
         {
-            LogHelper.Info(GetBaseSpell().GetSpell().Name + Helper.GetGCDCooldown().ToString());
-            slot.Add(GetBaseSpell().GetSpell());
-        }
-
-        public int Check()
-        {
-            var spell = GetBaseSpell().GetSpell();
-            if (spell == null)
-                return -1;
-            return GetBaseSpell().Check() ? 0 : -1;
+            Spell = GetBaseSpell().GetSpell();
+            return base.Check();
         }
         private uint GetBaseSpell()
         {

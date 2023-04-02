@@ -10,7 +10,8 @@ namespace Samurai
         {
             new NormalSpell(SpellsDefine.KaeshiNamikiri,true),
             new SpecialSpell_KaeshiSetsugekka(),
-            new NormalSpell(SpellsDefine.OgiNamikiri,true),
+            new SpecialSpell_OgiNamikiri(),
+            //new NormalSpell(SpellsDefine.OgiNamikiri,true),
             new SpecialSpell_Higanbana(),
             new SpecialSpell_MidareSetsugekka(),
             new BaseGCD(),
@@ -18,8 +19,8 @@ namespace Samurai
             new NormalSpell(SpellsDefine.Shoha,false),
             new NormalSpell(SpellsDefine.Ikishoten,false),
             new NormalSpell(SpellsDefine.HissatsuSenei,false),
-            new NormalSpell(SpellsDefine.HissatsuShinten,false),
             new SpecialSpell_MeikyoShisui(),
+            new SpecialSpell_HissatsuShinten(),
         };
     }
 }

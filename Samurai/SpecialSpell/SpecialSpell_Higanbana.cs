@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using CombatRoutine;
+using Common;
 using Common.Define;
 using Common.Helper;
 
@@ -12,8 +13,13 @@ namespace Samurai.SpecialSpell
         }
         public override int Check()
         {
-            if(!Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.Higanbana, 3000))
-                return base.Check();
+            if (!Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.Higanbana, 3000))
+            {
+                if (SpellsDefine.KaeshiSetsugekka.GetSpell().Cooldown.TotalMilliseconds <= 5000)
+                    return -2;
+                if (base.Check() >= 0)
+                    return 0;
+            }
             return -1;
         }
     }

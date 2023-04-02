@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Samurai
 {
-    internal static class BattleData
+    internal class BattleData
     {
-        public static bool Burst = true;
+        public static BattleData Instance = new BattleData();
+        public bool Burst = true;
     }
 }

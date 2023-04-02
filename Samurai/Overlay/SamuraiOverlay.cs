@@ -12,7 +12,7 @@ namespace Samurai.Overlay
     {
         public void Draw()
         {
-            ImGui.Text("My Overlay");
+            ImGui.Text("武士存在模拟技能，建议刷新率越高越好");
             OverlayHelper.DrawCommon();
             ImGui.Spacing();
             ImGui.Spacing();

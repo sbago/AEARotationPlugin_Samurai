@@ -7,6 +7,7 @@ using Samurai.Opener;
 using Samurai.Overlay;
 using Samurai.RotationEventHandler;
 using Samurai.SettingUI;
+using Samurai.SpecialSpell;
 
 namespace Samurai
 {
@@ -34,6 +35,8 @@ namespace Samurai
 
         private void NinjaRotationEntry_OnCastSucces(SpellType spellType, uint spellID)
         {
+            if (spellID == SpellsDefine.MeikyoShisui)
+                SpecialSpell_MeikyoShisui.canid = 0;
         }
 
         public void Dispose()
