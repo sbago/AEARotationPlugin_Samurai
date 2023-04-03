@@ -41,8 +41,8 @@ namespace Samurai
         public unsafe static bool Check(this uint actionId)
         {
             //移动中判定咏唱技能
-            if (((ActionData*)Core.Get<IMemApiFunctionPointer>().GetActionData(actionId))->IsCastSpell() && Core.Get<IMemApiMove>().IsMoving())
-                return false;
+            //if (((ActionData*)Core.Get<IMemApiFunctionPointer>().GetActionData(actionId))->IsCastSpell() && Core.Get<IMemApiMove>().IsMoving())
+            //    return false;
             if (CanUse(actionId))
             {
                 //距离判定。 todo fcs 似乎给了另一个简化距离判定的call

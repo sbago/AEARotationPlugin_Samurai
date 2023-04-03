@@ -1,4 +1,5 @@
 ﻿using CombatRoutine;
+using CombatRoutine.Setting;
 using Common;
 using Common.Define;
 using Common.Helper;
@@ -114,7 +115,7 @@ namespace Samurai.SpecialSpell
                     info.UseMei();
                     if (first)
                     {
-                        info.Sub(info.GCDCooldown - 187);
+                        info.Sub(info.GCDCooldown - SettingMgr.GetSetting<GeneralSettings>().ActionQueueInMs+15);
                     }
                     var v = 0;
                     for (; info.Buff.HiganbanaTimeLeft > 2300;)
