@@ -12,6 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Output\**" />
+    <EmbeddedResource Remove="Output\**" />
+    <None Remove="Output\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CombatRoutine">
       <HintPath>..\..\Dalamud_AEAssist\AEAssist\Output\AEAssistCNVersion\AEAssist\CombatRoutine.dll</HintPath>
       <Private>False</Private>
