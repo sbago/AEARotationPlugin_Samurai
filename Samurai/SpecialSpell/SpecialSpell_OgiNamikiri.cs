@@ -20,6 +20,8 @@ namespace Samurai.SpecialSpell
                 return -1;
             if (!Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.Higanbana, 3000))
                 return -2;
+            if (Core.Me.GetCurrTarget().HasMyAuraWithTimeleft(AurasDefine.Higanbana, 2100) && (Core.Get<IMemApiSpell>().GetLastComboSpellId() == 0 || Core.Get<IMemApiSpell>().GetLastComboSpellId() == SpellsDefine.Yukikaze))
+                return -3;
             return base.Check();
         }
     }
