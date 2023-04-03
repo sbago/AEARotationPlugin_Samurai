@@ -18,7 +18,7 @@ namespace Samurai
 
             new NormalSpell(SpellsDefine.Shoha,false),
             new NormalSpell(SpellsDefine.Ikishoten,false),
-            new NormalSpell(SpellsDefine.HissatsuSenei,false),
+            new NormalSpell(SpellsDefine.HissatsuSenei,false,true),
             new SpecialSpell_MeikyoShisui(),
             new SpecialSpell_HissatsuShinten(),
         };

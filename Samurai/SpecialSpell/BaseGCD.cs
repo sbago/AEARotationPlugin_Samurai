@@ -37,6 +37,8 @@ namespace Samurai.SpecialSpell
                     case SpellsDefine.Hakaze:
                         if (!HasSetsu)
                             return SpellsDefine.Yukikaze;
+                        if (!HasGetsu && !HasKa)
+                            return Core.Get<IMemApiBuff>().GetTimeSpanLeft(Core.Me, AurasDefine.Jinpu).TotalMilliseconds >= Core.Get<IMemApiBuff>().GetTimeSpanLeft(Core.Me, AurasDefine.Shifu).TotalMilliseconds ? SpellsDefine.Shifu : SpellsDefine.Jinpu;
                         if (!HasGetsu)
                             return SpellsDefine.Jinpu;
                         if (!HasKa)

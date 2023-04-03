@@ -46,7 +46,8 @@ namespace Samurai
         public void UseMei()
         {
             State.MeikyoShisuiStackCount = 3;
-            Cooldown.MeikyoShisui += 60000;
+            Cooldown.MeikyoShisui += 55000;
+            Buff.MeikyoShisui = 15000;
         }
         public bool CanUseMeiNotXue()
         {
@@ -182,6 +183,34 @@ namespace Samurai
             KaeshiSetsugekka = Core.Get<IMemApiFunctionPointer>().CheckActionCanUse(SpellsDefine.KaeshiSetsugekka) != 572;
             KaeshiOgiNamikiri = Core.Get<IMemApiFunctionPointer>().CheckActionCanUse(SpellsDefine.KaeshiNamikiri) != 572;
             MeikyoShisuiStackCount = Core.Get<IMemApiBuff>().GetStack(Core.Me,AurasDefine.MeikyoShisui);
+        }
+    }
+    public struct Result
+    {
+        public bool NoMei;//不用明镜可以刚好补dot
+        public bool IsNow;//现在使用可以刚好补dot
+        public bool Check;//使用明镜可以刚好补dot
+        public bool Over;//不使用明镜 明镜会溢出
+        public bool CastNow()
+        {
+            if (IsNow && !NoMei && !Over)//
+                return true;
+            if (Over && !Check)
+                return true;
+            if (IsNow && Over)
+                return true;
+            return false;
+            //return (IsNow && !NoMei) 
+            //    || (Check && Over);
+        }
+        public override string ToString()
+        {
+            var s = string.Empty;
+            foreach (var a in GetType().GetFields())
+            {
+                s += a.Name + ":" + a.GetValue(this) + " ";
+            }
+            return s;
         }
     }
 }

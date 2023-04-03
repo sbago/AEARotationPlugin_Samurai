@@ -25,7 +25,7 @@ namespace Samurai.SpecialSpell
 
         public void Build(Slot slot)
         {
-            LogHelper.Info($"AddAction:{Spell.LocalizedName} GCDtime:{Helper.GetGCDCooldown()} dot:{Core.Me.GetCurrTarget().GetBuffTimespanLeft(AurasDefine.Higanbana).TotalMilliseconds/1000:f2}");
+            //LogHelper.Info($"AddAction:{Spell.LocalizedName} GCDtime:{Helper.GetGCDCooldown()} dot:{Core.Me.GetCurrTarget().GetBuffTimespanLeft(AurasDefine.Higanbana).TotalMilliseconds/1000:f2}");
             lastadd = Spell.Id;
             slot.Add(Spell);
         }
@@ -33,7 +33,9 @@ namespace Samurai.SpecialSpell
         //通用检查 子类同名方法应该都调用此方法
         public virtual int Check()
         {
-            if (BurstControl && BattleData.Instance.Burst)
+            if (BurstControl && (AI.Instance.BattleData.CurrBattleTimeInMs / 1000) < 9)
+                return -6;
+            if (BurstControl && !BattleData.Instance.Burst)
                 return -4;
             if (Spell == null)
                 return -3;
@@ -41,6 +43,8 @@ namespace Samurai.SpecialSpell
             {
                 if(Helper.GetGCDCooldown() < 600)
                     return -2;
+                if (Helper.GetGCDCooldown() > 1900)
+                    return -5;
             }
             if (Spell.Check())
                 return 0;

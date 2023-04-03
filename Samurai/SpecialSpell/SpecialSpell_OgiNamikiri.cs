@@ -12,7 +12,7 @@ namespace Samurai.SpecialSpell
 {
     internal class SpecialSpell_OgiNamikiri :SpellBase
     {
-        public SpecialSpell_OgiNamikiri() :base(SpellsDefine.OgiNamikiri,true)
+        public SpecialSpell_OgiNamikiri() :base(SpellsDefine.OgiNamikiri,true,true)
         { }
         public override int Check()
         {
